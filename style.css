@@ -1,44 +1,54 @@
-/* The Wall inspired theme */
+/* Morning Glory background theme */
 :root {
-  --bg: #fafafa;       /* off-white like album background */
   --fg: #111111;       /* main text black */
   --muted: #555555;    /* softer gray text */
-  --accent: #e14d4d;   /* brick red */
+  --accent: #e14d4d;   /* red accent */
   --card: #ffffff;     /* cards = white */
   --edge: #cccccc;     /* light gray borders */
   --chip: #f1f1f1;     /* light background for chips */
 }
 
 * { box-sizing: border-box; }
+
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
-  color: var(--fg);
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
+  color: var(--fg);
 
-  /* subtle grid pattern: bricks */
-  background-image: linear-gradient(to right, #e8e8e8 1px, transparent 1px),
-                    linear-gradient(to bottom, #e8e8e8 1px, transparent 1px);
-  background-size: 40px 40px; /* brick size */
+  /* Background image */
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
+
+/* Optional overlay to improve readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.6); /* light white wash overlay */
+  z-index: -1;
+}
+
 .wrap { max-width: 920px; margin: 0 auto; padding: 28px 20px; }
 
 header { padding-top: 48px; text-align: center; }
 .avatar {
-  width: 92px; height: 92px; border-radius: 50%;
-  display: grid; place-items: center; margin: 0 auto 12px;
-  background: var(--accent); /* solid red circle */
-  color: #fff; font-size: 40px; font-weight: 800;
-  border: 2px solid var(--fg);
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 12px;
+  border: 2px solid var(--edge);
 }
 h1 {
   font-size: 42px;
   margin: 0 0 6px;
   letter-spacing: 1px;
-  text-transform: none;
   font-weight: 800;
+  text-transform: none; /* keep original capitalization */
 }
 .tag { color: var(--muted); margin: 0 0 8px; font-style: italic; }
 
@@ -65,7 +75,7 @@ h1 {
 h2 {
   font-size: 24px;
   margin-top: 28px;
-  border-bottom: 2px solid var(--accent); /* stronger accent line */
+  border-bottom: 2px solid var(--accent);
   padding-bottom: 8px;
 }
 
@@ -126,25 +136,3 @@ h2 {
 .bullets { padding-left: 18px; }
 a { color: var(--accent); }
 footer { text-align: center; color: var(--muted); padding-bottom: 48px; }
-.avatar {
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 12px;
-  border: 2px solid var(--edge);
-}
-/* Brick Wall background */
-body {
-  background-color: #fafafa; /* off-white base */
-  color: #111;
-  font-family: Inter, system-ui, sans-serif;
-  line-height: 1.6;
-
-  background-image:
-    linear-gradient(to right, #e8e8e8 1px, transparent 1px),
-    linear-gradient(to bottom, #e8e8e8 1px, transparent 1px);
-  background-size: 60px 30px; /* 60px wide (long brick), 30px tall (short brick) */
-  background-position: 0 0, 30px 15px; /* offset the 2nd grid to make staggered bricks */
-}
