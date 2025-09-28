@@ -8,18 +8,27 @@
 
 * { box-sizing: border-box; }
 
-/* ---------- Global / desktop background ---------- */
+/* ---------- Base / type ---------- */
 html, body {
   margin: 0; padding: 0;
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
   color: var(--fg);
-
-  /* Desktop: Berwick Street (your background.png) */
-  background: url("background.png") no-repeat center 30% fixed;
-  background-size: cover;
+  background: #f3f3f3;          /* fallback behind the fixed wall */
 }
 
+/* Use a fixed pseudo-element for the wallpaper (works on iOS) */
+body { position: relative; }
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("background.png") no-repeat center 30% / cover;
+  will-change: transform;        /* helps mobile repaint */
+}
+
+/* ---------- Layout & components ---------- */
 .wrap { max-width: 920px; margin: 0 auto; padding: 28px 20px; }
 
 header { padding-top: 48px; text-align: center; }
@@ -116,17 +125,11 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
 
 /* ---------- Mobile: <= 640px ---------- */
 @media (max-width: 640px) {
-  /* Use the portrait version and avoid the 200% zoom */
-  html { background: none; } /* iOS double-bg fix */
-  body {
+  /* Swap to your portrait crop and keep it fixed */
+  body::before{
     background-image: url("background-mobile.png");
-    background-repeat: no-repeat;
-    background-position: center 15%;   /* tweak 10–25% if you want more sky or street */
-    background-attachment: scroll;     /* iOS friendly */
-
-    /* Fit the full height of the screen; tiny side bands filled by bg color */
-    background-size: auto 100vh;
-    background-color: #f3f3f3;
+    background-position: center 15%;  /* tweak 10–25% to show more sky/street */
+    background-size: cover;
   }
 
   .wrap { padding: 20px 14px; }
