@@ -9,17 +9,16 @@
 * { box-sizing: border-box; }
 
 /* ---------- Base / type ---------- */
-/* Put the fallback color on HTML only */
 html {
   background: #f3f3f3;
+  scroll-behavior: smooth;        /* one clean declaration */
 }
 body {
   margin: 0; padding: 0;
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
   color: var(--fg);
-
-  background: transparent;   /* IMPORTANT: let ::before be visible */
+  background: transparent;        /* let ::before show */
   position: relative;
   z-index: 0;
 }
@@ -29,11 +28,10 @@ body::before{
   content:"";
   position: fixed;
   inset: 0;
-  z-index: -1;                         /* behind content, above html bg */
-  /* If the image path is wrong, you'll still see a subtle gradient */
+  z-index: -1;                    /* behind content, above html bg */
   background:
     url("background.png") no-repeat center 30% / cover,
-    linear-gradient(#e9e9e9, #f5f5f5);
+    linear-gradient(#e9e9e9, #f5f5f5); /* graceful fallback */
   pointer-events: none;
   will-change: transform;
 }
@@ -50,6 +48,8 @@ header { padding-top: 48px; text-align: center; }
 h1 { font-size: 36px; margin: 0 0 6px; letter-spacing: 0.5px; }
 .tag { color: var(--muted); margin: 0 0 12px; font-style: italic; }
 
+/* Nav & chips */
+.nav { margin-top: 12px; }        /* breathing room under lyrics box */
 .nav a {
   display: inline-block; margin: 0 8px; padding: 6px 12px;
   color: var(--fg); text-decoration: none;
@@ -132,18 +132,12 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
   padding: 8px 10px;
   text-align: center;
 }
-/* Smooth jump to anchors */
-html { scroll-behavior: smooth; }
 
-/* Smooth scroll to anchors */
-html { scroll-behavior: smooth; }
-
-/* Artist index chips */
+/* Artist index/chips + cards */
 .artist-index { margin: 10px 0; }
 .chip-link { text-decoration: none; }
 .chip-link:hover { border-color: var(--accent); color: var(--accent); }
 
-/* Artist cards */
 .artist-card { margin-top: 18px; }
 .artist-card h3 {
   display: flex;
@@ -163,6 +157,7 @@ html { scroll-behavior: smooth; }
 .backtop a { color: var(--muted); text-decoration: none; }
 .backtop a:hover { color: var(--accent); }
 
+/* Lyrics box */
 .lyrics{
   font-style: italic;
   font-size: 15px;
@@ -171,44 +166,56 @@ html { scroll-behavior: smooth; }
   border: 1px solid var(--edge);
   border-radius: 12px;
   padding: 12px 18px;
-  margin: 12px auto 0;
+  margin: 12px auto 16px; /* note: bottom margin adds space above nav */
   max-width: 640px;
   line-height: 1.6;
   text-align: center;
-  display: block;            /* ensure it shows even if previously inline */
+  display: block;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* optional: a bit tighter on small screens */
-@media (max-width:640px){
-  .lyrics{ font-size:14px; padding:10px 14px; max-width:90%; }
 }
 
 /* ---------- Mobile: <= 640px ---------- */
 @media (max-width: 640px) {
   /* Swap to your portrait crop and keep it fixed */
   body::before{
-    background-image: url
-.lyrics {
-  font-style: italic;
-  font-size: 15px;
-  color: #222;                  /* darker for readability */
-  background: rgba(255, 255, 255, 0.85); /* semi-opaque box */
-  border: 1px solid var(--edge);
-  border-radius: 12px;
-  padding: 12px 18px;
-  margin: 12px auto 0;
-  max-width: 640px;             /* doesn’t stretch too wide */
-  line-height: 1.6;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-.lyrics-box {
-  margin-bottom: 24px;   /* space between lyrics and nav */
+    background-image: url("background-mobile.png");
+    background-position: center 15%;
+    background-size: cover;
+  }
+
+  .wrap { padding: 20px 14px; }
+  header { padding-top: 28px; }
+
+  .avatar { width: 72px; height: 72px; }
+  h1 { font-size: 28px; letter-spacing: .3px; }
+  .tag { font-size: 14px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+  .nav { margin-top: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav a { white-space: nowrap; margin: 0 6px 6px 0; padding: 6px 10px; }
+
+  .section-card {
+    padding: 14px;
+    margin-bottom: 16px;
+    background: rgba(255,255,255,0.95);
+  }
+
+  .grid.two { grid-template-columns: 1fr; gap: 12px; }
+  .panel { padding: 12px; }
+
+  .embeds iframe { height: 132px !important; border-radius: 10px; }
+
+  .photo-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .photo-grid img { height: 160px; }
+
+  .lyrics{ font-size:14px; padding:10px 14px; max-width:92%; }
 }
 
-.nav {
-  margin-top: 16px;      /* push nav further down from lyrics */
+/* ---------- Very narrow: <= 390px ---------- */
+@media (max-width: 390px) {
+  .photo-grid { grid-template-columns: 1fr; }
+  .embeds iframe { height: 120px !important; }
 }
-
-
