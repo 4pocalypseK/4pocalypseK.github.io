@@ -68,4 +68,17 @@ footer { text-align: center; color: var(--muted); padding-bottom: 48px; }
   height: 152px !important; /* compact card */
   margin: 8px 0;            /* small gap between players */
 }
+/* Stack embeds neatly, remove big halo boxes */
+.embeds {
+  display: grid;
+  gap: 8px;             /* controls space between players */
+}
+
+.embeds iframe {
+  display: block;
+  height: 152px !important;  /* force compact height */
+  margin: 0;                 /* no extra gap */
+  border: 0;                 /* remove the extra outline box */
+  border-radius: 12px;       /* keep rounded corners */
+}
 
