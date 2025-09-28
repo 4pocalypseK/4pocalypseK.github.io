@@ -33,7 +33,13 @@ header { padding-top: 48px; text-align: center; }
   color: #fff; font-size: 40px; font-weight: 800;
   border: 2px solid var(--fg);
 }
-h1 { font-size: 36px; margin: 0 0 6px; letter-spacing: 0.5px; }
+h1 {
+  font-size: 42px;
+  margin: 0 0 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 800;
+}
 .tag { color: var(--muted); margin: 0 0 8px; font-style: italic; }
 
 .nav a {
@@ -89,6 +95,7 @@ h2 {
   margin: 0;
   border: 1px solid var(--edge);
   border-radius: 12px;
+  background: #fff;
 }
 
 .cards {
