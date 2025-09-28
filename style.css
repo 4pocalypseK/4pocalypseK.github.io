@@ -169,3 +169,14 @@ html { scroll-behavior: smooth; }
   /* Swap to your portrait crop and keep it fixed */
   body::before{
     background-image: url
+.lyrics {
+  font-style: italic;
+  font-size: 15px;
+  color: #333;               /* darker text for readability */
+  background: rgba(255,255,255,0.8); /* subtle backdrop */
+  border-radius: 20px;
+  padding: 10px 14px;
+  display: inline-block;
+  margin-top: 8px;
+  line-height: 1.5;
+}
