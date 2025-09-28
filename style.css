@@ -126,3 +126,12 @@ h2 {
 .bullets { padding-left: 18px; }
 a { color: var(--accent); }
 footer { text-align: center; color: var(--muted); padding-bottom: 48px; }
+.avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 12px;
+  border: 2px solid var(--edge);
+}
