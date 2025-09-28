@@ -9,22 +9,32 @@
 * { box-sizing: border-box; }
 
 /* ---------- Base / type ---------- */
-html, body {
+/* Put the fallback color on HTML only */
+html {
+  background: #f3f3f3;
+}
+body {
   margin: 0; padding: 0;
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
   color: var(--fg);
-  background: #f3f3f3;          /* fallback behind wallpaper */
+
+  background: transparent;   /* IMPORTANT: let ::before be visible */
+  position: relative;
+  z-index: 0;
 }
 
-/* Use a fixed pseudo-element for wallpaper (works on iOS too) */
-body { position: relative; }
+/* Fixed wallpaper behind everything (works on iOS/Android/Desktop) */
 body::before{
   content:"";
   position: fixed;
   inset: 0;
-  z-index: -1;
-  background: url("background.png") no-repeat center 30% / cover;
+  z-index: -1;                         /* behind content, above html bg */
+  /* If the image path is wrong, you'll still see a subtle gradient */
+  background:
+    url("background.png") no-repeat center 30% / cover,
+    linear-gradient(#e9e9e9, #f5f5f5);
+  pointer-events: none;
   will-change: transform;
 }
 
@@ -125,43 +135,6 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
 
 /* ---------- Mobile: <= 640px ---------- */
 @media (max-width: 640px) {
+  /* Swap to your portrait crop and keep it fixed */
   body::before{
-    background-image: url("background-mobile.png");
-    background-position: center 15%;  /* tweak if face is too high/low */
-    background-size: cover;
-  }
-
-  .wrap { padding: 20px 14px; }
-  header { padding-top: 28px; }
-
-  .avatar { width: 72px; height: 72px; }
-  h1 { font-size: 28px; letter-spacing: .3px; }
-  .tag { font-size: 14px; }
-
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-  .nav { margin-top: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .nav a { white-space: nowrap; margin: 0 6px 6px 0; padding: 6px 10px; }
-
-  .section-card {
-    padding: 14px;
-    margin-bottom: 16px;
-    background: rgba(255,255,255,0.95);
-  }
-
-  .grid.two { grid-template-columns: 1fr; gap: 12px; }
-  .panel { padding: 12px; }
-
-  .embeds iframe { height: 132px !important; border-radius: 10px; }
-
-  .photo-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .photo-grid img { height: 160px; }
-}
-
-/* ---------- Very narrow: <= 390px ---------- */
-@media (max-width: 390px) {
-  .photo-grid { grid-template-columns: 1fr; }
-  .embeds iframe { height: 120px !important; } 
-}
+    background-image: url
