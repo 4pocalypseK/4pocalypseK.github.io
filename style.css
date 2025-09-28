@@ -1,90 +1,76 @@
-/* Rock-inspired minimal theme: classic, but modern */
+/* The Wall inspired theme */
 :root {
-  --bg: #0c0d10;
-  --fg: #e9eaf1;
-  --muted: #a7a9b6;
-  --accent: #e14d4d; /* subtle 'The Wall' red; change to what you want */
-  --card: #14151c;
-  --edge: #232538;
-  --chip: #1a1b25;
+  --bg: #fafafa;       /* off-white like album background */
+  --fg: #111111;       /* main text black */
+  --muted: #555555;    /* softer gray text */
+  --accent: #e14d4d;   /* brick red */
+  --card: #ffffff;     /* cards = white */
+  --edge: #cccccc;     /* light gray borders */
+  --chip: #f1f1f1;     /* light background for chips */
 }
 
 * { box-sizing: border-box; }
-html, body { 
-  margin: 0; 
-  padding: 0; 
-  background: var(--bg); 
-  color: var(--fg); 
-  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif; 
-  line-height: 1.6; 
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+
+  /* subtle grid pattern: bricks */
+  background-image: linear-gradient(to right, #e8e8e8 1px, transparent 1px),
+                    linear-gradient(to bottom, #e8e8e8 1px, transparent 1px);
+  background-size: 40px 40px; /* brick size */
 }
-.wrap { 
-  max-width: 920px; 
-  margin: 0 auto; 
-  padding: 28px 20px; 
-}
+.wrap { max-width: 920px; margin: 0 auto; padding: 28px 20px; }
 
 header { padding-top: 48px; text-align: center; }
 .avatar {
-  width: 92px; 
-  height: 92px; 
-  border-radius: 50%;
-  display: grid; 
-  place-items: center; 
-  margin: 0 auto 12px;
-  background: linear-gradient(135deg, #2a2a3b, #1a1a26);
-  color: #ffdde1; 
-  font-size: 40px; 
-  font-weight: 800;
-  border: 1px solid var(--edge);
+  width: 92px; height: 92px; border-radius: 50%;
+  display: grid; place-items: center; margin: 0 auto 12px;
+  background: var(--accent); /* solid red circle */
+  color: #fff; font-size: 40px; font-weight: 800;
+  border: 2px solid var(--fg);
 }
 h1 { font-size: 36px; margin: 0 0 6px; letter-spacing: 0.5px; }
-.tag { color: var(--muted); margin: 0 0 8px; }
+.tag { color: var(--muted); margin: 0 0 8px; font-style: italic; }
 
 .nav a {
-  display: inline-block; 
-  margin: 0 8px; 
-  padding: 6px 12px;
-  color: var(--fg); 
-  text-decoration: none; 
-  border: 1px solid var(--edge); 
-  border-radius: 10px;
+  display: inline-block; margin: 0 8px; padding: 6px 12px;
+  color: var(--fg); text-decoration: none;
+  border: 1px solid var(--edge); border-radius: 10px;
+  background: #fff;
 }
 .nav a:hover { color: var(--accent); border-color: var(--accent); }
 
 .chips { margin: 6px 0 10px; }
-.chip { 
-  display: inline-block; 
-  background: var(--chip); 
-  border: 1px solid var(--edge); 
-  color: var(--muted);
-  padding: 4px 10px; 
-  border-radius: 999px; 
-  margin: 4px 6px; 
-  font-size: 14px; 
+.chip {
+  display: inline-block;
+  background: var(--chip);
+  border: 1px solid var(--edge);
+  color: var(--fg);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin: 4px 6px;
+  font-size: 14px;
 }
 
-h2 { 
-  font-size: 24px; 
-  margin-top: 28px; 
-  border-bottom: 1px solid var(--edge); 
-  padding-bottom: 8px; 
+h2 {
+  font-size: 24px;
+  margin-top: 28px;
+  border-bottom: 2px solid var(--accent); /* stronger accent line */
+  padding-bottom: 8px;
 }
 
-.grid.two { 
-  display: grid; 
-  grid-template-columns: 1.2fr 0.8fr; 
-  gap: 16px; 
-}
-@media (max-width: 820px) { 
-  .grid.two { grid-template-columns: 1fr; } 
-}
+.grid.two { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; }
+@media (max-width: 820px) { .grid.two { grid-template-columns: 1fr; } }
 
-.panel { 
-  background: var(--card); 
-  border: 1px solid var(--edge); 
-  border-radius: 12px; 
-  padding: 14px; 
+.panel {
+  background: var(--card);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  padding: 14px;
 }
 .panel h3 { margin: 6px 0 8px; font-size: 18px; }
 .gear { list-style: none; padding: 0; margin: 0; }
@@ -94,41 +80,39 @@ h2 {
 /* Spotify embeds */
 .embeds {
   display: grid;
-  gap: 8px; /* space between players */
+  gap: 12px;
 }
 .embeds iframe {
   display: block;
   width: 100%;
-  height: 152px !important;  /* compact player height */
-  margin: 0;                 /* no extra gap */
-  border: 0;                 /* remove halo box */
-  border-radius: 12px;       /* keep rounded corners */
+  height: 152px !important;
+  margin: 0;
+  border: 1px solid var(--edge);
+  border-radius: 12px;
 }
 
-.hint { margin-top: 8px; }
-.hint summary { cursor: pointer; color: var(--accent); }
-
-.cards { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-  gap: 14px; 
-  margin-top: 12px; 
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
 }
-.card { 
-  background: var(--card); 
-  border: 1px solid var(--edge); 
-  border-radius: 12px; 
-  padding: 16px; 
+.card {
+  background: var(--card);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  padding: 16px;
 }
 .card h3 { margin: 6px 0 8px; font-size: 18px; }
-.btn { 
-  display: inline-block; 
-  margin-top: 8px; 
-  padding: 8px 12px; 
-  border-radius: 10px; 
-  text-decoration: none; 
-  color: var(--fg); 
-  border: 1px solid var(--edge); 
+.btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--fg);
+  border: 1px solid var(--edge);
+  background: #fff;
 }
 .btn:hover { border-color: var(--accent); color: var(--accent); }
 
