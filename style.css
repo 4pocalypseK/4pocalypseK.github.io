@@ -63,3 +63,9 @@ footer { text-align: center; color: var(--muted); padding-bottom: 48px; }
   display: block;
   margin: 6px 0;
 }
+.embeds iframe {
+  display: block;
+  height: 152px !important; /* compact card */
+  margin: 8px 0;            /* small gap between players */
+}
+
