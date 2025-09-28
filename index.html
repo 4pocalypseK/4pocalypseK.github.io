@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kiet — Music & Interests</title>
+  <meta name="description" content="Kiet's personal intro: music taste, interests, and projects.">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta property="og:title" content="Kiet — Music & Interests">
+  <meta property="og:description" content="Pink Floyd • Oasis • Bowie • guitars • bikes • ideas">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <header class="wrap">
+    <div class="hero">
+      <div class="avatar" aria-hidden="true">K</div>
+      <h1>Kiet</h1>
+      <p class="tag">Student • Rock listener • Builder</p>
+      <div class="chips">
+        <span class="chip">Pink Floyd</span>
+        <span class="chip">Oasis</span>
+        <span class="chip">David Bowie</span>
+        <span class="chip">FLAC</span>
+        <span class="chip">Guitar</span>
+        <span class="chip">Motorbikes</span>
+      </div>
+      <nav class="nav">
+        <a href="#music">Music taste</a>
+        <a href="#now">Now playing</a>
+        <a href="#interests">Interests</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="music">
+      <h2>Music taste</h2>
+      <div class="grid two">
+        <div>
+          <p>I lean classic & alt rock with a focus on instrumentals and fidelity. My daily rotation includes:</p>
+          <ul class="bullets">
+            <li>Pink Floyd — <em>Any Colour You Like</em>, <em>Comfortably Numb</em>, <em>On the Turning Away</em></li>
+            <li>Oasis — <em>Half the World Away</em>, <em>Don’t Look Back in Anger</em></li>
+            <li>David Bowie — <em>Heroes</em>, <em>Station to Station</em></li>
+            <li>Mayday (五月天) • Jay Chou live 2004</li>
+          </ul>
+          <p>I listen in lossless (FLAC / 24‑bit) and prefer neutral‑warm tuning over piercing treble.</p>
+        </div>
+        <aside class="panel">
+          <h3>Gear</h3>
+          <ul class="gear">
+            <li>Moondrop Kadenz (main)</li>
+            <li>BLON BL‑03 (casual)</li>
+            <li>FiiO Snowsky DAP</li>
+            <li>Occasional: HD650 / open‑back wishlist</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="now">
+      <h2>Now playing / playlists</h2>
+      <p>Drop your embeds here — replace the <code>src</code> URLs with your own:</p>
+      <div class="embeds">
+        <!-- Spotify example -->
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="100%" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <!-- TIDAL example (replace with your share/embed link) -->
+        <iframe src="https://embed.tidal.com/playlists/00000000-0000-0000-0000-000000000000" width="100%" height="400" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <details class="hint">
+        <summary>How to swap the embeds</summary>
+        <ol>
+          <li>Open your playlist in Spotify/TIDAL → Share → Embed (or Copy Embed Code).</li>
+          <li>Paste the URL into the <code>src</code> attribute above.</li>
+          <li>Keep <code>width="100%"</code> for responsiveness.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section id="interests">
+      <h2>Interests</h2>
+      <div class="grid two">
+        <div>
+          <h3>Design & tech</h3>
+          <p>Lightweight laptops, cooling innovation, and audio tuning. Curious about manufacturing & brand building.</p>
+          <h3>Riding</h3>
+          <p>Yamaha Exciter 155 fan; dream routes across Việt Nam’s countryside. Prefer high‑seat scooters/ADV style.</p>
+        </div>
+        <div>
+          <h3>Learning & creativity</h3>
+          <ul class="bullets">
+            <li>Self‑taught guitar (daily practice)</li>
+            <li>Strategy games, Sudoku/Minesweeper</li>
+            <li>Video edits: boot animations, visual experiments</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>vAero — Laptop concept</h3>
+          <p>Thin/light chassis, sideways micro‑fan cooling, Moondrop‑tuned audio. Targeting Zephyrus & MBP buyers.</p>
+          <a class="btn" href="#" aria-label="Learn more about vAero">Learn more</a>
+        </article>
+        <article class="card">
+          <h3>Boot animation — The Wall</h3>
+          <p>GIF‑based boot screen inspired by classic album art. Exported from DaVinci; optimized for size.</p>
+          <a class="btn" href="#" aria-label="See boot animation">See it</a>
+        </article>
+        <article class="card">
+          <h3>AWG idea</h3>
+          <p>Affordable atmospheric water generator concepts for tropical climates. Early‑stage notes.</p>
+          <a class="btn" href="#" aria-label="Read notes">Read notes</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:hello@example.com">hello@example.com</a></p>
+      <p>Elsewhere: <a href="#" rel="me">GitHub</a> · <a href="#" rel="me">Instagram</a></p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <small>© <span id="year"></span> Kiet — Built with plain HTML/CSS</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
