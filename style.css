@@ -135,13 +135,22 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
 /* Smooth jump to anchors */
 html { scroll-behavior: smooth; }
 
-/* Artist section */
-.artist-index { margin: 6px 0 12px; }
+/* Smooth scroll to anchors */
+html { scroll-behavior: smooth; }
+
+/* Artist index chips */
+.artist-index { margin: 10px 0; }
 .chip-link { text-decoration: none; }
 .chip-link:hover { border-color: var(--accent); color: var(--accent); }
 
+/* Artist cards */
 .artist-card { margin-top: 18px; }
-.artist-card h3 { display: flex; align-items: baseline; gap: 8px; margin: 6px 0 8px; }
+.artist-card h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 6px 0 8px;
+}
 .artist-card .era {
   font-size: 12px;
   color: var(--muted);
@@ -150,10 +159,10 @@ html { scroll-behavior: smooth; }
   padding: 2px 8px;
   border-radius: 999px;
 }
-.artist-grid h4 { margin: 6px 0 6px; font-size: 16px; }
 .backtop { margin: 8px 0 0; }
 .backtop a { color: var(--muted); text-decoration: none; }
 .backtop a:hover { color: var(--accent); }
+
 
 /* ---------- Mobile: <= 640px ---------- */
 @media (max-width: 640px) {
