@@ -7,12 +7,16 @@
 }
 
 * { box-sizing: border-box; }
+
+/* ---------- Global / desktop background ---------- */
 html, body {
   margin: 0; padding: 0;
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
   color: var(--fg);
-  background: url("background.png") no-repeat center center fixed;
+
+  /* Desktop: Berwick Street (your background.png) */
+  background: url("background.png") no-repeat center 30% fixed;
   background-size: cover;
 }
 
@@ -72,7 +76,7 @@ h2 { font-size: 24px; margin-top: 0; border-bottom: 1px solid var(--edge); paddi
 a { color: var(--accent); }
 footer { text-align: center; color: var(--muted); padding: 40px 0; }
 
-/* New: section cards */
+/* Section cards */
 .section-card {
   background: var(--card);
   border: 1px solid var(--edge);
@@ -88,7 +92,6 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
   gap: 16px;
   margin-top: 12px;
 }
-
 .photo-grid figure {
   margin: 0;
   background: var(--card);
@@ -97,15 +100,13 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
   overflow: hidden;
   box-shadow: 0 1px 6px rgba(0,0,0,0.06);
 }
-
 .photo-grid img {
   width: 100%;
-  height: 220px;        /* consistent height cards */
-  object-fit: cover;    /* crop nicely */
+  height: 220px;
+  object-fit: cover;
   display: block;
   border-bottom: 1px solid var(--edge);
 }
-
 .photo-grid figcaption {
   font-size: 14px;
   color: var(--muted);
@@ -113,55 +114,51 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
   text-align: center;
 }
 
-/* ---------- Mobile fixes: <= 640px ---------- */
+/* ---------- Mobile: <= 640px ---------- */
 @media (max-width: 640px) {
-  /* 1) Background: use alternate image on mobile */
-  html, body {
-    background: url("background-mobile.png") no-repeat center top scroll;
-    background-size: cover;                 /* full cover */
-    background-attachment: scroll;          /* iOS fix */
+  /* Use the portrait version and avoid the 200% zoom */
+  html { background: none; } /* iOS double-bg fix */
+  body {
+    background-image: url("background-mobile.png");
+    background-repeat: no-repeat;
+    background-position: center 15%;   /* tweak 10–25% if you want more sky or street */
+    background-attachment: scroll;     /* iOS friendly */
+
+    /* Fit the full height of the screen; tiny side bands filled by bg color */
+    background-size: auto 100vh;
+    background-color: #f3f3f3;
   }
 
-  /* 2) Tighter layout */
   .wrap { padding: 20px 14px; }
   header { padding-top: 28px; }
 
-  /* 3) Hero scale */
   .avatar { width: 72px; height: 72px; }
   h1 { font-size: 28px; letter-spacing: .3px; }
   .tag { font-size: 14px; }
 
-  /* 4) Chips and nav: wrap or scroll nicely */
   .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
   .nav { margin-top: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .nav a { white-space: nowrap; margin: 0 6px 6px 0; padding: 6px 10px; }
 
-  /* 5) Section cards: denser and more opaque over busy bg */
   .section-card {
     padding: 14px;
     margin-bottom: 16px;
     background: rgba(255,255,255,0.95);
   }
 
-  /* 6) Two-column -> single column */
   .grid.two { grid-template-columns: 1fr; gap: 12px; }
   .panel { padding: 12px; }
 
-  /* 7) Spotify players: shorter on small screens */
   .embeds iframe { height: 132px !important; border-radius: 10px; }
 
-  /* 8) Photos grid: bigger tiles, natural aspect ratio */
   .photo-grid {
-    grid-template-columns: 1fr 1fr;   /* two per row */
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  .photo-grid img {
-    height: 160px;
-    object-fit: cover;
-  }
+  .photo-grid img { height: 160px; }
 }
 
-/* ---------- Very narrow screens: <= 390px ---------- */
+/* ---------- Very narrow: <= 390px ---------- */
 @media (max-width: 390px) {
   .photo-grid { grid-template-columns: 1fr; }
   .embeds iframe { height: 120px !important; }
