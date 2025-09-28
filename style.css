@@ -204,6 +204,11 @@ html { scroll-behavior: smooth; }
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 .lyrics-box {
-  margin-bottom: 24px;   /* space below the lyrics */
+  margin-bottom: 24px;   /* space between lyrics and nav */
 }
+
+.nav {
+  margin-top: 16px;      /* push nav further down from lyrics */
+}
+
 
