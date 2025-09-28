@@ -14,10 +14,10 @@ html, body {
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
   color: var(--fg);
-  background: #f3f3f3;          /* fallback behind the fixed wall */
+  background: #f3f3f3;          /* fallback behind wallpaper */
 }
 
-/* Use a fixed pseudo-element for the wallpaper (works on iOS) */
+/* Use a fixed pseudo-element for wallpaper (works on iOS too) */
 body { position: relative; }
 body::before{
   content:"";
@@ -25,7 +25,7 @@ body::before{
   inset: 0;
   z-index: -1;
   background: url("background.png") no-repeat center 30% / cover;
-  will-change: transform;        /* helps mobile repaint */
+  will-change: transform;
 }
 
 /* ---------- Layout & components ---------- */
@@ -125,10 +125,9 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
 
 /* ---------- Mobile: <= 640px ---------- */
 @media (max-width: 640px) {
-  /* Swap to your portrait crop and keep it fixed */
   body::before{
     background-image: url("background-mobile.png");
-    background-position: center 15%;  /* tweak 10–25% to show more sky/street */
+    background-position: center 15%;  /* tweak if face is too high/low */
     background-size: cover;
   }
 
@@ -164,5 +163,5 @@ footer { text-align: center; color: var(--muted); padding: 40px 0; }
 /* ---------- Very narrow: <= 390px ---------- */
 @media (max-width: 390px) {
   .photo-grid { grid-template-columns: 1fr; }
-  .embeds iframe { height: 120px !important; }
+  .embeds iframe { height: 120px !important; } 
 }
